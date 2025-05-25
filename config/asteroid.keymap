@@ -7,53 +7,40 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // commented out the working code
-            // ---------------------------------------------------------------------------------
-            // |   `  |  1  |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |  \   |
-            // | CAPS |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  ;  |  ENT |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  /  | APOS |
-            // | CTRL | ALT | GUI | SPC | SPC | SPC |     | SPC | LOW |LARW |DARW |UARW | RARW |
-            //                        bindings = <
-            //   &kp GRAVE  &kp N1    &kp N2    &kp N3     &kp N4     &kp N5               &kp N6     &kp N7  &kp N8     &kp N9    &kp N0    &kp BSPC
-            //   &kp TAB    &kp Q     &kp W     &kp E      &kp R      &kp T                &kp Y      &kp U   &kp I      &kp O     &kp P     &kp BSLH
-            //   &kp CAPS   &kp A     &kp S     &kp D      &kp F      &kp G                &kp H      &kp J   &kp K      &kp L     &kp SEMI  &kp RET
-            //   &kp LSHFT  &kp Z     &kp X     &kp C      &kp V      &kp B                &kp N      &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp APOS
-            //   &kp LCTRL  &kp LALT  &kp LGUI  &kp SPACE  &kp LALT   &kp LGUI             &kp SPACE  &mo 1   &kp LARW   &kp DARW  &kp UARW  &kp RARW
-            //                        >;
-            // this is for testing.
-            // Note: Left half columns are SW6 to SW1 (outside to inside) due to the current map.
-            //       Right half columns are SW1 to SW6 (inside to outside).
-            //       Adjust the key assignments based on your physical layout if needed.
-            // ---------------------------------------------------------------------------------
-            // |   `  |  1  |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |  \   |
-            // | CAPS |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  ;  |  ENT |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  /  | SHFT |
-            // | CTRL | ALT | GUI | SPC | SPC |     |     |     | SPC | SPC | ALT | GUI | CTRL |
-            // |      |     |     |     |     | SPC |     | SPC |     |     |     |     |      |
+            // Physical layout mapping based on the provided images
+            // Left Half:                                Right Half:
+            // |      |  1  |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  |  0  |      |
+            // | TAB  |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  | BKSP |
+            // | SHFT |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  ;  | SHFT |
+            // | CAPS |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  /  |BT_SEL|
+            // |      |     | L1  | CTRL|ALT/OPT| CMD |     | LEFT| DOWN|  UP |RIGHT|     |      |
+            // |      |     |     |     |     | SPC |     | ENT |     |     |     |     |      |
 
             bindings = <
-&trans          &kp N1  &kp N2  &kp N3     &kp N4            &kp N5       &kp N6     &kp N7    &kp N8        &kp N9     &kp N0    &trans
-&bt BT_SEL 0    &kp Q   &kp W   &kp E      &kp R             &kp T        &kp Y      &kp U     &kp I         &kp O      &kp P     &kp BACKSPACE
-&kp LEFT_SHIFT  &kp A   &kp S   &kp D      &kp F             &kp G        &kp H      &kp J     &kp K         &kp L      &kp SEMI  &kp RIGHT_SHIFT
-&kp CAPSLOCK    &kp Z   &kp X   &kp C      &kp V             &kp B        &kp N      &kp M     &kp COMMA     &kp DOT    &kp FSLH  &mo 1
-&trans          &trans  &mo 1   &kp LCTRL  &kp LG(LEFT_ALT)  &kp LCMD     &kp LEFT   &kp DOWN  &kp UP_ARROW  &kp RIGHT  &trans    &trans
-&trans          &trans  &trans  &trans     &trans            &kp SPACE    &kp ENTER  &trans    &trans        &trans     &trans    &trans
+&trans    &kp N1   &kp N2   &kp N3    &kp N4            &kp N5       &kp N6     &kp N7    &kp N8        &kp N9     &kp N0    &trans
+&kp TAB   &kp Q    &kp W    &kp E     &kp R             &kp T        &kp Y      &kp U     &kp I         &kp O      &kp P     &kp BACKSPACE
+&kp LSHFT &kp A    &kp S    &kp D     &kp F             &kp G        &kp H      &kp J     &kp K         &kp L      &kp SEMI  &kp RSHFT
+&kp CAPS  &kp Z    &kp X    &kp C     &kp V             &kp B        &kp N      &kp M     &kp COMMA     &kp DOT    &kp FSLH  &mo 1
+&trans    &trans   &mo 1    &kp LCTRL &kp LG(LEFT_ALT)  &kp LCMD     &kp LEFT   &kp DOWN  &kp UP_ARROW  &kp RIGHT  &trans    &trans
+&trans    &trans   &trans   &trans    &trans            &kp SPACE    &kp ENTER  &trans    &trans        &trans     &trans    &trans
             >;
         };
 
         lower_layer {
-            // ------------------------------------------------------------------------------------------------------------
-            // |       |  BT1  |  BT2  |  BT3  |  BT4  |  BT5  |          |       |       |       |       |       | BTCLR |
-            // |       |       |       |       |       |       |          |       |       |       |       |       |       |
-            // |       |       |       | LPAR  | RPAR  |       |          |       | LBKT  | RBKT  |       |       |       |
-            // |       |       |       |       |       |       |          |       |       |       |       |       |       |
+            // Layer 1 - Bluetooth controls, symbols, and function keys
+            // |      | BT1 | BT2 | BT3 | BT4 | BT5 |     |     |     |     |     |     |      |
+            // |      |     |     |     |     |     |     |     |     |     |     |     |      |
+            // |      |     |     |  (  |  )  |     |     |     |  [  |  ]  |  -  |  =  |      |
+            // |      |     |     |     |     |     |     |     |     |     |     |     |BTCLR |
+            // |      |     |     |     |     |     |     |     |     |     |     |     |      |
+            // |      |     |     |     |     |     |     |     |     |     |     |     |      |
 
             bindings = <
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans    &trans    &trans     &trans     &bt BT_CLR
+&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans    &trans    &trans     &trans     &trans
 &trans  &trans        &trans        &trans        &trans        &trans          &trans  &trans    &trans    &trans     &trans     &trans
 &trans  &trans        &trans        &kp LPAR      &kp RPAR      &trans          &trans  &kp LBKT  &kp RBKT  &kp MINUS  &kp EQUAL  &trans
+&trans  &trans        &trans        &trans        &trans        &trans          &trans  &trans    &trans    &trans     &trans     &bt BT_CLR
+&trans  &trans        &trans        &trans        &trans        &trans          &trans  &trans    &trans    &trans     &trans     &trans
 &trans  &trans        &trans        &trans        &trans        &trans          &trans  &trans    &trans    &trans     &trans     &trans
             >;
         };
